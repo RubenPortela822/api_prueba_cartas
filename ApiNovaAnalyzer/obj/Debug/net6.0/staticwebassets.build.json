@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "igxLz31voL0Yf4tGyYLGS1Gu+mTW8NpJLwxqu4aBFPM=",
+  "Source": "ApiNovaAnalyzer",
+  "BasePath": "_content/ApiNovaAnalyzer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
