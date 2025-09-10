@@ -39,5 +39,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapHub<SorteoHub>("/seguimiento-sorteo");
-
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Urls.Add($"http://*:{port}");
 app.Run();
