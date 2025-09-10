@@ -2,12 +2,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copiar csproj y restaurar dependencias
-COPY *.csproj ./
-RUN dotnet restore
+# Copiar el csproj y restaurar dependencias
+COPY ApiNovaAnalyzer/ApiNovaAnalyzer.csproj ApiNovaAnalyzer/
+RUN dotnet restore ApiNovaAnalyzer/ApiNovaAnalyzer.csproj
 
-# Copiar todo el código y compilar
-COPY . ./
+# Copiar todo y compilar
+COPY . .
+WORKDIR /src/ApiNovaAnalyzer
 RUN dotnet publish -c Release -o /app
 
 # Imagen final de runtime
