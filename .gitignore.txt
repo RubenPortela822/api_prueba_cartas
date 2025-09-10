@@ -1,0 +1,14 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.dbmdl
+*.cache
+
+# .NET
+bin/
+obj/
+
+# Angular
+node_modules/
+dist/

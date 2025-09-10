@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Jorge\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\ApiNovaAnalyzer.csproj": {}
+    "C:\\Users\\grecol\\Desktop\\proyectos\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\ApiNovaAnalyzer.csproj": {}
   },
   "projects": {
-    "D:\\Jorge\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\ApiNovaAnalyzer.csproj": {
+    "C:\\Users\\grecol\\Desktop\\proyectos\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\ApiNovaAnalyzer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Jorge\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\ApiNovaAnalyzer.csproj",
+        "projectUniqueName": "C:\\Users\\grecol\\Desktop\\proyectos\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\ApiNovaAnalyzer.csproj",
         "projectName": "ApiNovaAnalyzer",
-        "projectPath": "D:\\Jorge\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\ApiNovaAnalyzer.csproj",
-        "packagesPath": "C:\\Users\\PERSONAL\\.nuget\\packages\\",
-        "outputPath": "D:\\Jorge\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\obj\\",
+        "projectPath": "C:\\Users\\grecol\\Desktop\\proyectos\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\ApiNovaAnalyzer.csproj",
+        "packagesPath": "C:\\Users\\grecol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\grecol\\Desktop\\proyectos\\ApiNovaAnalyzer\\ApiNovaAnalyzer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\PERSONAL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\grecol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -88,24 +94,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.26, 6.0.26]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.26, 6.0.26]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.26, 6.0.26]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.26, 6.0.26]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -114,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
