@@ -28,6 +28,11 @@ namespace ApiNovaAnalyzer.Services
             await _sorteo.cerrarSorteo();
         }
 
+        public async Task listaGanadores(ListaGanadoresDTO listaGanadores)
+        {
+            await _sorteo.listaGanadores(listaGanadores);
+        }
+
         public async Task<CartonesCliente> getCartonesClientes(string idCliente) 
         {
             return await _sorteo.getCartonesClientes(idCliente);

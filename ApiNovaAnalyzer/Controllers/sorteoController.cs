@@ -48,5 +48,11 @@ namespace ApiNovaAnalyzer.Controllers
             return await _sorteoService.getCartonesClientes(idCliente);            
         }
 
+        [HttpPost, Route("lista-ganadores")]
+        public async void listaGanadores([FromBody] ListaGanadoresDTO listaGanadores)
+        {
+            await _sorteoService.listaGanadores(listaGanadores);            
+        }
+
     }
 }

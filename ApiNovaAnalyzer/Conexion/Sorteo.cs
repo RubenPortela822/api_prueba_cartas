@@ -1,4 +1,5 @@
-﻿using ApiNovaAnalyzer.Hubs;
+﻿using ApiNovaAnalyzer.DTOs;
+using ApiNovaAnalyzer.Hubs;
 using ApiNovaAnalyzer.Models;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.AspNetCore.SignalR;
@@ -31,6 +32,11 @@ namespace ApiNovaAnalyzer.Conexion
         public async Task cerrarSorteo()
         {            
             await _hubContext.Clients.All.SendAsync("cerrar-sorteo","CERRAR");
+        }
+
+        public async Task listaGanadores(ListaGanadoresDTO listaGanadores)
+        {
+            await _hubContext.Clients.All.SendAsync("ganadores", listaGanadores.ganadores);
         }
 
         public async Task balotaEliminada(int numeroMovimiento)
