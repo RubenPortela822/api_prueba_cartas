@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "igxLz31voL0Yf4tGyYLGS1Gu+mTW8NpJLwxqu4aBFPM=",
-  "Source": "ApiNovaAnalyzer",
-  "BasePath": "_content/ApiNovaAnalyzer",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"HpbJyNsFV7Y/BF7kacSmLmndDl2zag2iTKGhLqQKLjY=","Source":"ApiNovaAnalyzer","BasePath":"_content/ApiNovaAnalyzer","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

@@ -1,5 +1,6 @@
 ﻿using ApiNovaAnalyzer.Conexion;
 using ApiNovaAnalyzer.DTOs;
+using ApiNovaAnalyzer.Models;
 
 namespace ApiNovaAnalyzer.Services
 {
@@ -17,9 +18,19 @@ namespace ApiNovaAnalyzer.Services
             await _sorteo.enviarBalotaJugada();
         }
 
+        public async Task balotasLanzadas()
+        {
+            _sorteo.balotasLanzadas();
+        }
+
         public async Task cerrarSorteo()
         {
             await _sorteo.cerrarSorteo();
+        }
+
+        public async Task<CartonesCliente> getCartonesClientes(string idCliente) 
+        {
+            return await _sorteo.getCartonesClientes(idCliente);
         }
 
         public async Task balotaEliminada(ElimarBalotaDTO request)

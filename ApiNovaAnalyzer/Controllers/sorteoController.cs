@@ -1,4 +1,5 @@
 ﻿using ApiNovaAnalyzer.DTOs;
+using ApiNovaAnalyzer.Models;
 using ApiNovaAnalyzer.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,14 @@ namespace ApiNovaAnalyzer.Controllers
         }
 
         [HttpGet, Route("enviar-balota-jugada")]
-        public async Task<IActionResult> enviarBalotaJugada() {           
-            await _sorteoService.enviarBalotaJugada();
-            return Ok(new { status = "balota enviada" });
+        public async void enviarBalotaJugada() {           
+            await _sorteoService.enviarBalotaJugada();           
+        }
+
+        [HttpGet, Route("balotas-jugadas")]
+        public async void balotasLanzadas()
+        {
+            await _sorteoService.balotasLanzadas();
         }
 
 
@@ -34,6 +40,12 @@ namespace ApiNovaAnalyzer.Controllers
         {
             await _sorteoService.balotaEliminada(eliminarBalotaDto);            
             return Ok(new { status = "balota eliminada" });
+        }
+
+        [HttpGet("cartones-clientes/{idCliente}")]
+        public async Task<CartonesCliente> getCartonesClientes(string idCliente)
+        {
+            return await _sorteoService.getCartonesClientes(idCliente);            
         }
 
     }

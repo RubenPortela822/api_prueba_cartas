@@ -17,7 +17,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CorsPolicy", policy =>
     {
         policy
-            .WithOrigins("http://localhost:5000", "https://cartas-moviles.web.app") 
+            .WithOrigins("http://localhost:5000") 
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -39,6 +39,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapHub<SorteoHub>("/seguimiento-sorteo");
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-app.Urls.Add($"http://*:{port}");
+//var port = 5000;
+//app.Urls.Add($"http://*:{port}");
 app.Run();
