@@ -39,9 +39,19 @@ namespace ApiNovaAnalyzer.Services
         }
 
         public async Task balotaEliminada(ElimarBalotaDTO request)
-        {            
-            //Console.WriteLine($"Balota: {request.numeroMoviento}");
+        {                        
             await _sorteo.balotaEliminada(request.numeroMovimiento);
         }
+
+        public  List<int> cartonesZona(ListarCartonesZonaDTO request)
+        {
+           return _sorteo.cartonesZona(request.zona);
+        }
+
+        public List<string> getZonas()
+        {
+            return _sorteo.getZonas();
+        }
+
     }
 }

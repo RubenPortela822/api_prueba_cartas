@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiNovaAnalyzer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34e93cdf448d89e77914baccf6c0e389c8d0d723")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1a6f4169bee21bcd6fada006e6e99ff50f2d4ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiNovaAnalyzer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiNovaAnalyzer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

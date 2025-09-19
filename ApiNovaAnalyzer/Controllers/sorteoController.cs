@@ -54,5 +54,19 @@ namespace ApiNovaAnalyzer.Controllers
             await _sorteoService.listaGanadores(listaGanadores);            
         }
 
+        [HttpPost, Route("cartones-zona")]
+        public List<int> cartonesZona([FromBody] ListarCartonesZonaDTO listarCartonesZona)
+        {
+            return  _sorteoService.cartonesZona(listarCartonesZona);
+        }
+
+
+        [HttpGet("zonas")]
+        public  List<string> getZonas()
+        {
+            return  _sorteoService.getZonas();
+        }
+
+
     }
 }
