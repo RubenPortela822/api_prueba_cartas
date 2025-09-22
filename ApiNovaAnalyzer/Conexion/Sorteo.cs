@@ -26,12 +26,12 @@ namespace ApiNovaAnalyzer.Conexion
 
         public void balotasLanzadas()
         {
-           this.enviarBalotaJugada();
+            this.enviarBalotaJugada();
         }
 
         public async Task cerrarSorteo()
-        {            
-            await _hubContext.Clients.All.SendAsync("cerrar-sorteo","CERRAR");
+        {
+            await _hubContext.Clients.All.SendAsync("cerrar-sorteo", "CERRAR");
         }
 
         public async Task listaGanadores(ListaGanadoresDTO listaGanadores)
@@ -49,14 +49,19 @@ namespace ApiNovaAnalyzer.Conexion
             return await this.consultarCartonesClientes(idCliente);
         }
 
-        public  List<int> cartonesZona(string zona)
+        public List<int> cartonesZona(string zona)
         {
-            return  this.consultarCartonesZona(zona);
+            return this.consultarCartonesZona(zona);
         }
 
         public List<string> getZonas()
         {
             return this.consultarZonas();
+        }
+
+        public Carton getCartonZona(string cartonId, string zona)
+        {
+            return  this.consultarCartonZona(cartonId,zona);
         }
 
         private async Task<CartonesCliente> consultarCartonesClientes(string idCliente)
@@ -74,7 +79,7 @@ namespace ApiNovaAnalyzer.Conexion
                 using (SqlConnection v_con_valores = con_valores.Conexion())
                 {
 
-                    string sql1 = "SELECT TOP 1 * FROM bonos_venta where cedula_cliente='"+idCliente+ "' order by id_bono_ruletazo desc ";                    
+                    string sql1 = "SELECT TOP 1 * FROM bonos_venta where cedula_cliente='" + idCliente + "' order by id_bono_ruletazo desc ";
                     using (SqlCommand command = new SqlCommand(sql1, v_con_valores))
                     {
                         v_con_valores.Open();
@@ -82,7 +87,7 @@ namespace ApiNovaAnalyzer.Conexion
                         {
                             while (reader.Read())
                             {
-                                nombre  = reader.GetString(1);
+                                nombre = reader.GetString(1);
                                 sala = reader.GetString(4);
                                 zona = reader.GetString(2);
                             }
@@ -115,7 +120,7 @@ namespace ApiNovaAnalyzer.Conexion
                         {
                             while (reader.Read())
                             {
-                                cartones.Add(int.Parse(reader.GetString(0)));                               
+                                cartones.Add(int.Parse(reader.GetString(0)));
                             }
                         }
                     }
@@ -125,7 +130,7 @@ namespace ApiNovaAnalyzer.Conexion
 
 
             }
-            
+
             catch (SqlException e)
             {
                 Console.WriteLine(e.ToString());
@@ -139,13 +144,13 @@ namespace ApiNovaAnalyzer.Conexion
                 Zona = zona,
                 Cartones = cartones
             };
-            
+
 
         }
 
-        private List<int> consultarBalotasSorteo() 
+        private List<int> consultarBalotasSorteo()
         {
-            List <int> balotasJugadas = new List<int>();
+            List<int> balotasJugadas = new List<int>();
             var balotaJugada = 0;
 
             try
@@ -156,7 +161,7 @@ namespace ApiNovaAnalyzer.Conexion
                 {
 
                     string balotas = "SELECT * FROM movimientos_centralizados where estado='V' order by id_movimiento desc ";
-                    
+
                     using (SqlCommand command = new SqlCommand(balotas, v_con_valores))
                     {
                         v_con_valores.Open();
@@ -201,7 +206,7 @@ namespace ApiNovaAnalyzer.Conexion
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
-                            {                                
+                            {
                                 cartones.Add(int.Parse(reader.GetString(0)));
                             }
                         }
@@ -258,6 +263,48 @@ namespace ApiNovaAnalyzer.Conexion
 
             return zonas;
         }
-        
+        private Carton consultarCartonZona(string cartonId, string zona)
+        {
+            Carton carton = new Carton();
+
+            try
+            {
+                ConexionBD con_valores = new ConexionBD();
+
+                using (SqlConnection v_con_valores = con_valores.Conexion())
+                {
+
+                    string sql1 = "SELECT TOP 1 * FROM bonos_venta where numero_bono='" + cartonId + "' AND nombre_campana='" + zona+ "' order by id_bono_ruletazo desc ";
+                    using (SqlCommand command = new SqlCommand(sql1, v_con_valores))
+                    {
+                        v_con_valores.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                carton.id_bono_ruletazo = reader.GetInt32(0);
+                                carton.nombre_cliente = reader.GetString(1);
+                                carton.nombre_campana = reader.GetString(2);
+                                carton.numero_bono = reader.GetString(3);
+                                carton.nombre_sala = reader.GetString(4);
+                                carton.cedula_cliente = reader.GetString(5);
+                            }
+                        }
+                    }
+
+                    v_con_valores.Dispose();
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return carton;
+        }
+
     }
 }
+

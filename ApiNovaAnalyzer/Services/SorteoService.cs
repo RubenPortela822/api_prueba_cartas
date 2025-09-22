@@ -53,5 +53,11 @@ namespace ApiNovaAnalyzer.Services
             return _sorteo.getZonas();
         }
 
+        public Carton getCartonZona(string cartonId, string zona)
+        {
+            return _sorteo.getCartonZona(cartonId,zona);
+
+        }
+
     }
 }

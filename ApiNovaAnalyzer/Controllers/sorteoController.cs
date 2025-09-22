@@ -67,6 +67,12 @@ namespace ApiNovaAnalyzer.Controllers
             return  _sorteoService.getZonas();
         }
 
+        [HttpGet("carton-zona")]
+        public Carton getCartonZona(string cartonId, string zona)
+        {
+            return _sorteoService.getCartonZona(cartonId,zona);
+        }
+
 
     }
 }
