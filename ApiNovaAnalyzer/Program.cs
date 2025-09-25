@@ -17,7 +17,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CorsPolicy", policy =>
     {
         policy
-            .WithOrigins("http://localhost:5000", "https://cartas-moviles.web.app", "http://localhost:4200") 
+            .WithOrigins("http://localhost:5000", "https://cartas-moviles.web.app", "http://localhost:4200", "http://192.168.1.4:8091") 
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
