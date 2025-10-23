@@ -14,7 +14,7 @@ namespace ApiNovaAnalyzer.Services
         }
 
         public async Task enviarBalotaJugada()
-        {                        
+        {
             await _sorteo.enviarBalotaJugada();
         }
 
@@ -33,19 +33,29 @@ namespace ApiNovaAnalyzer.Services
             await _sorteo.listaGanadores(listaGanadores);
         }
 
-        public async Task<CartonesCliente> getCartonesClientes(string idCliente) 
+        public Object consultarUrlTransmision()
+        {
+            return _sorteo.consultarUrlTransmision();
+        }
+
+        public bool actualizarTransmision(int id, string url)
+        {            
+            return _sorteo.actualizarTransmision(id, url);
+        }
+
+        public async Task<CartonesCliente> getCartonesClientes(string idCliente)
         {
             return await _sorteo.getCartonesClientes(idCliente);
         }
 
         public async Task balotaEliminada(ElimarBalotaDTO request)
-        {                        
+        {
             await _sorteo.balotaEliminada(request.numeroMovimiento);
         }
 
-        public  List<int> cartonesZona(ListarCartonesZonaDTO request)
+        public List<int> cartonesZona(ListarCartonesZonaDTO request)
         {
-           return _sorteo.cartonesZona(request.zona);
+            return _sorteo.cartonesZona(request.zona);
         }
 
         public List<string> getZonas()
@@ -55,7 +65,7 @@ namespace ApiNovaAnalyzer.Services
 
         public Carton getCartonZona(string cartonId, string zona)
         {
-            return _sorteo.getCartonZona(cartonId,zona);
+            return _sorteo.getCartonZona(cartonId, zona);
 
         }
 

@@ -1,6 +1,7 @@
 ﻿using ApiNovaAnalyzer.DTOs;
 using ApiNovaAnalyzer.Hubs;
 using ApiNovaAnalyzer.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.AspNetCore.SignalR;
 using System.Collections.Specialized;
@@ -61,7 +62,7 @@ namespace ApiNovaAnalyzer.Conexion
 
         public Carton getCartonZona(string cartonId, string zona)
         {
-            return  this.consultarCartonZona(cartonId,zona);
+            return this.consultarCartonZona(cartonId, zona);
         }
 
         private async Task<CartonesCliente> consultarCartonesClientes(string idCliente)
@@ -188,6 +189,7 @@ namespace ApiNovaAnalyzer.Conexion
             return balotasJugadas;
         }
 
+
         private List<int> consultarCartonesZona(string zona)
         {
             List<int> cartones = new List<int>();
@@ -274,7 +276,7 @@ namespace ApiNovaAnalyzer.Conexion
                 using (SqlConnection v_con_valores = con_valores.Conexion())
                 {
 
-                    string sql1 = "SELECT TOP 1 * FROM bonos_venta where numero_bono='" + cartonId + "' AND nombre_campana='" + zona+ "' order by id_bono_ruletazo desc ";
+                    string sql1 = "SELECT TOP 1 * FROM bonos_venta where numero_bono='" + cartonId + "' AND nombre_campana='" + zona + "' order by id_bono_ruletazo desc ";
                     using (SqlCommand command = new SqlCommand(sql1, v_con_valores))
                     {
                         v_con_valores.Open();
@@ -303,6 +305,87 @@ namespace ApiNovaAnalyzer.Conexion
             }
 
             return carton;
+        }
+
+        public Object consultarUrlTransmision()
+        {
+
+            object transmision = null;
+
+            try
+            {
+                ConexionBD con_valores = new ConexionBD();
+
+                using (SqlConnection v_con_valores = con_valores.Conexion())
+                {
+
+                    string sql1 = "SELECT TOP 1 * FROM transmisiones order by id desc ";
+                    using (SqlCommand command = new SqlCommand(sql1, v_con_valores))
+                    {
+                        v_con_valores.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                transmision = new
+                                {
+                                    id = reader.GetInt32(0),
+                                    url = reader.GetString(1)
+                                };
+                            }
+                        }
+                    }
+
+                    v_con_valores.Dispose();
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            if (transmision == null)
+            {
+                return new
+                {
+                    id = 0,
+                    url = ""
+                };
+
+            }
+
+            return transmision;
+        }
+
+        public bool actualizarTransmision(int id, string url)
+        {
+            try
+            {
+                ConexionBD con_valores = new ConexionBD();
+
+                using (SqlConnection conn = con_valores.Conexion())
+                {
+                    string query = "UPDATE transmisiones SET url = @url WHERE id = @id";
+
+                    using (SqlCommand command = new SqlCommand(query, conn))
+                    {
+                        command.Parameters.AddWithValue("@url", url);
+                        command.Parameters.AddWithValue("@id", id);
+
+                        conn.Open();
+                        int filasAfectadas = command.ExecuteNonQuery();
+                        conn.Close();
+
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
     }
